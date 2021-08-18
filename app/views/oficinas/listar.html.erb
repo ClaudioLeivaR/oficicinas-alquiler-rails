@@ -1,0 +1,11 @@
+<h1>Oficinas Registradas</h1>
+<% @lista_oficinas.each do |oficina| %>
+
+    <p>     <%= oficina.codigo %> 
+            <%= oficina.precio %> 
+            <%= oficina.esta_alquilada %> 
+    </p>
+    <hr>
+<%end %>
+
+<a href="/oficinas/crear">volver a crear</a>

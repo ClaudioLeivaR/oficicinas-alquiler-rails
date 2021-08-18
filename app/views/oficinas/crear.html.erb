@@ -1,0 +1,23 @@
+<h1>Crear una nueva oficina para alquilar</h1>
+
+<%= form_with(model: @oficina_nueva, url: '/oficinas/guardar') do |formulario| %>
+    <%if @oficina_nueva.errors.any? %>
+        <% @oficina_nueva.errors.each do |error| %>
+            <p style="color:red;"> <%= error.full_message %></p>
+        <%end %>
+    <% end %>
+    
+        <%= formulario.label :codigo %>
+        <%= formulario.text_field :codigo %>
+    <br>
+        <%= formulario.label :precio %>
+        <%= formulario.text_field :precio %>
+    <br>
+        <%= formulario.label :esta_alquilada %>
+        <%= formulario.check_box :esta_alquilada %>
+    <br>
+
+        <%= formulario.submit %>
+<%end%>
+
+<a >
