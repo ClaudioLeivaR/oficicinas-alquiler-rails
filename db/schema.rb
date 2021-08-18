@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_144416) do
+ActiveRecord::Schema.define(version: 2021_08_18_155455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "administradores", force: :cascade do |t|
+    t.string "nombre_usuario"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "inquilinos", force: :cascade do |t|
+    t.string "nombre"
+    t.string "apellidos"
+    t.string "rut"
+    t.string "telefono"
+    t.bigint "oficina_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["oficina_id"], name: "index_inquilinos_on_oficina_id"
+  end
 
   create_table "oficinas", force: :cascade do |t|
     t.string "codigo"
@@ -23,4 +41,5 @@ ActiveRecord::Schema.define(version: 2021_08_17_144416) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "inquilinos", "oficinas"
 end
