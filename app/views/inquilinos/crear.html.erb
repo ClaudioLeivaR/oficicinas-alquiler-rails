@@ -1,0 +1,53 @@
+<h1>Ingresar un nuevo iquilino </h1>
+
+<%= form_with(model: @inquilino, url: '/inquilinos/crear') do |formulario| %>
+
+    
+
+    <%= formulario.label :nombre %>
+    <%= formulario.text_field :nombre %>    
+    
+    <% if @inquilino.errors[:nombre].any? %>
+    <p style= "color:red;">
+        <%= @inquilino.errors[:nombre].first %>
+    </p>
+    <%end%>
+
+    <br>
+    <%= formulario.label :apellidos %>
+    <%= formulario.text_field :apellidos %> 
+
+    <% if @inquilino.errors[:apellidos].any? %>
+        <p style= "color:red;">
+        <%= @inquilino.errors[:apellidos].first %>
+        </p>
+    <%end%>
+
+    <br>
+    <%= formulario.label :telefono %>
+    <%= formulario.text_field :telefono %> 
+
+    <% if @inquilino.errors[:telefono].any? %>
+        <p style= "color:red;">
+        <%= @inquilino.errors[:telefono].first %>
+        </p>
+    <%end%>
+    <br>
+    <%= formulario.label :rut %>
+    <%= formulario.text_field :rut %> 
+
+    <%if @inquilino.errors[:rut].any? %>
+        <p style= "color:red;">
+        <%= @inquilino.errors[:rut].first %>
+        </p>
+    <%end%>
+    <br>
+
+    <%= formulario.label :oficina_id %>
+    <%= formulario.select :oficina_id, options_from_collection_for_select(@oficinas, :id, :codigo) %>
+    <br>
+    <%= formulario.submit 'Registrar inquilino' %>
+
+
+
+<% end %>
