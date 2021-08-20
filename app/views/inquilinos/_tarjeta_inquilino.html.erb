@@ -1,0 +1,79 @@
+
+
+ <h1>Ingreso de Inquilinos</h1>
+
+<%= form_with(model: inquilino, url: '/inquilinos/crear') do |formulario| %>
+
+
+<div class="mb_3">
+    <%= formulario.label :nombre , class: 'form-label'%>
+    <%= formulario.text_field :nombre, class: 'form-control' %>
+    <% if inquilino.errors[:nombre].any? %>
+
+        <div style="color: red">
+
+            <%= inquilino.errors[:nombre].first %>
+
+        </div>
+
+    <% end %>
+</div>
+
+
+    
+<div class="mb_3">
+    <%= formulario.label :apellido , class: 'form-label'%>
+
+    <%= formulario.text_field :apellido, class: 'form-control' %>
+
+    <% if inquilino.errors[:apellido].any? %>
+<div style="color: red">
+        <%= inquilino.errors[:apellido].first %>
+</div>
+    <% end %>
+</div>
+    
+
+
+<div class="mb_3">
+    <%= formulario.label :telefono , class: 'form-label'%>
+
+    <%= formulario.text_field :telefono, class: 'form-control' %>
+
+    <% if inquilino.errors[:telefono].any? %>
+<div style="color: red">
+        <%= inquilino.errors[:telefono].first %>
+</div>
+    <% end %>
+</div>
+    
+
+
+<div class="mb_3">
+    <%= formulario.label :rut , class: 'form-label'%>
+
+    <%= formulario.text_field :rut , class: 'form-control'%>
+
+    <% if inquilino.errors[:rut].any? %>
+<div style="color: red">
+        <%= inquilino.errors[:rut].first %>
+</div>
+    <% end %>
+</div>
+    
+
+
+<div class="mb-3">
+    <%= formulario.label :oficina_id, class: 'form-label' %>
+
+    <%= formulario.select :oficina_id, 
+
+        options_from_collection_for_select(oficina, :id, :codigo, inquilino.oficina.id) , {},
+        {class: 'form-select'}
+        %>
+</div>
+
+
+    <%= formulario.submit 'Registrar inquilino' , class: 'btn btn-primary' %>
+
+<% end %>

@@ -1,0 +1,47 @@
+
+<!--
+    <p>  Oficina  Nº <%= oficina.codigo %>  
+    <br>
+        <span> Valor: </span>
+        <%= oficina.precio %> 
+    </p>
+            
+            
+        <% if oficina.inquilinos.empty? %>
+            <p>Disponible</p>
+        <% else %>
+            <span> Alquilado por: </span>
+                <ul>
+                    <% oficina.inquilinos.each do |inquilino| %>
+                        <li>
+                            <%= inquilino.nombre + " " + inquilino.apellidos %>
+                        </li>
+                    <% end %>    
+                </ul>
+            <% end %>
+    
+    <hr>
+    -->
+
+
+    <div class="card" style="width: 18rem; margin-top_ 1em;"> 
+        <div class="card-body">
+            <h5 class="card-title">Oficina Nº <%= oficina.codigo %> </h5>
+            <p class="card-text">Valor: <%= oficina.precio %></p>
+            <% if oficina.inquilinos.empty? %>
+                <p>Disponible</p>
+            <% else %>
+                <span> Alquilado por: </span>
+                    <ul>
+                        <% oficina.inquilinos.each do |inquilino| %>
+                            <li>
+                                <%= inquilino.nombre + " " + inquilino.apellidos %>
+                            </li>
+            <% end %>    
+                    </ul>
+                    <% end %>
+        
+            <a href="#" class="btn btn-primary">Modificar</a>
+            <a href="#" class="btn btn-warning">Borrar Inquilinos</a>
+        </div>
+    </div>
