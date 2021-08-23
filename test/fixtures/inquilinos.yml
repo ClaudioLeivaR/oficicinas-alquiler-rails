@@ -2,14 +2,14 @@
 
 one:
   nombre: MyString
-  apellidos: MyString
+  apellido: MyString
   rut: MyString
   telefono: MyString
   oficina: one
 
 two:
   nombre: MyString
-  apellidos: MyString
+  apellido: MyString
   rut: MyString
   telefono: MyString
   oficina: two

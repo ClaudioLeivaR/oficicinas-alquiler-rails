@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_08_18_155455) do
 
   create_table "inquilinos", force: :cascade do |t|
     t.string "nombre"
-    t.string "apellidos"
+    t.string "apellido"
     t.string "rut"
     t.string "telefono"
     t.bigint "oficina_id", null: false

@@ -1,15 +1,16 @@
 class InquilinosController<ApplicationController
 
-    def  listar
+    before_action :buscar_inquilino, only:[:mostrar, :editar, :actualizar, :eliminar]
 
+
+    def  listar
+        @inquilino = Inquilino.all.order(id: :asc)
     end
 
     def mostrar
-        id_iquilino = params[:id]
-
-        @inquilino = Inquilino.find(id_iquilino)
 
     end
+
     #get - devolver el formulario para crear un inquilino
     def crear
         @inquilino = Inquilino.new
@@ -18,37 +19,43 @@ class InquilinosController<ApplicationController
 
     #post - recibir los datos de un inquilino y guardar en bdd
     def guardar
-        valores = params.require(:inquilino).permit(:nombre, :apellidos, :telefono, :rut, :oficina_id)
-        puts valores.inspect
-
-        @inquilino = Inquilino.new(valores)
+        @inquilino = Inquilino.new(inquilino_params)
 
         if @inquilino.save
             redirect_to "/oficinas/listar"
         else
             @oficinas = Oficina.select(:id, :codigo).order(codigo: :asc)
-
             render :crear
-
         end
-
     end
+    
     #get
     def editar
-        id_inquilino = params[:id]
-        @inquilino = Inquilino.find(id_inquilino)
         @oficinas = Oficina.select(:id, :codigo).order(codigo: :asc)
     end
+    
     #put/patch
     def actualizar
-        @inquilino = Inquilino.select(:nombre, :apellido, :telefono, :rut, :oficina_id).order(codigo: :asc)
-        if @inquilino.update(valores)
-            
+       if @inquilino.update(inquilino_params)
+            redirect_to inquilino_path
+        else
+            render :editar
         end
     end
     #DELETE
     def eliminar
-
+        @inquilino.destroy
+        redirect_to action: :listar
     end
+
+    private
+    def inquilino_params
+        return params.require(:inquilino).permit(:nombre, :apellido, :telefono, :rut, :oficina_id)
+    end
+
+    def buscar_inquilino
+        @inquilino = Inquilino.find(params[:id])
+    end
+
 end
 

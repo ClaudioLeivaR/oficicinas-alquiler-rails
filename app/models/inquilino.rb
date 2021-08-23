@@ -5,7 +5,7 @@ class Inquilino < ApplicationRecord
   after_destroy :verificar_disponibilidad_oficina
 
   validates :nombre, presence: true
-  validates :apellidos, presence: true
+  validates :apellido, presence: true
   validates :telefono, presence: true
   
   validates :rut, presence: true
