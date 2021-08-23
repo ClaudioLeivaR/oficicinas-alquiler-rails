@@ -1,8 +1,9 @@
 class OficinasController < ApplicationController
   def listar
 
-    @lista_oficinas = Oficina.all
-
+    @lista_oficinas = Oficina.includes(:inquilinos).order(id: :asc)
+    cookies.encrypted[:mi_galleta] = "de chocolate"
+    
   end
 
   def crear

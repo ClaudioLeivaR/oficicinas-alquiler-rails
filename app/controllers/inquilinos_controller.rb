@@ -4,7 +4,8 @@ class InquilinosController<ApplicationController
 
 
     def  listar
-        @inquilino = Inquilino.all.order(id: :asc)
+        @inquilino = Inquilino.includes(:oficina).order(id: :asc)
+        
     end
 
     def mostrar
