@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
  
   #rutas oficinas
-  get 'oficinas/listar', to: 'oficinas#listar'  
+  get 'oficinas/listar', to: 'oficinas#listar'  , as: 'oficinas'
   get 'oficinas/crear', to: 'oficinas#crear'    
   post 'oficinas/guardar', to: 'oficinas#guardar'
 
@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   delete  'inquilinos/:id'    , to: 'inquilinos#eliminar'
 
 
+  root       to: 'sesiones#login'    , as: 'login'
+  post      'sesiones'        , to: 'sesiones#iniciar'  
+  delete    'sesiones'        , to: 'sesiones#cerrar'
 
 
 end

@@ -1,4 +1,7 @@
 class OficinasController < ApplicationController
+  
+  before_action :validar_sesion
+  
   def listar
 
     @lista_oficinas = Oficina.includes(:inquilinos).order(id: :asc)

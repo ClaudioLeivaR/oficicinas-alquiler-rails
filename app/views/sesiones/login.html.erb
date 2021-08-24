@@ -1,0 +1,27 @@
+<div class="container">
+
+    <h1>Iniciar Sesion</h1>
+
+    <% if flash[:error_sesion]  %>
+        <div class="alert alert-danger" role="alert">
+            <%= flash[:error_sesion] %>
+        </div>
+    <%end %>
+
+    <%= form_with(url: 'sesiones') do |formulario| %>
+        <div class="mb-3">
+            <%= formulario.label :nombre_usuario, class: 'form-label' %>
+            <%= formulario.text_field :nombre_usuario, class: 'form-controller' %>
+        </div>   
+
+        <div class="mb-3">   
+            <%= formulario.label :password, class: 'form-label' %>
+            <%= formulario.password_field :password, class: 'form-controller' %>
+
+        </div>   
+
+        <div>
+    <%= formulario.submit 'iniciar sesion', class: 'tbn btn-primary' %>
+    <% end %>
+
+</div>

@@ -1,5 +1,5 @@
 class InquilinosController<ApplicationController
-
+   before_action :validar_sesion
     before_action :buscar_inquilino, only:[:mostrar, :editar, :actualizar, :eliminar]
 
 
